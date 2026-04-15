@@ -1,0 +1,43 @@
+{
+  "input_mode": "webcam",
+  "video_path": "C:\\ROI_SAS\\TESTING_INPUT.mp4",
+  "webcam_url": "https://10.188.247.42:8080/video",
+  "roi": [
+    470,
+    137,
+    65,
+    104
+  ],
+  "loiter_threshold": 10,
+  "email": {
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "sender_email": "aegon.6.vi@gmail.com",
+    "sender_password": "ojll ezlp ujbh morv",
+    "receiver_email": "pugalpride@gmail.com"
+  },
+  "evidence_dir": "evidence",
+  "logs_dir": "logs",
+  "display": {
+    "show_fps": true,
+    "font_scale": 0.5
+  },
+  "roi_polygon": [
+    [
+      701,
+      228
+    ],
+    [
+      979,
+      238
+    ],
+    [
+      940,
+      606
+    ],
+    [
+      681,
+      590
+    ]
+  ]
+}

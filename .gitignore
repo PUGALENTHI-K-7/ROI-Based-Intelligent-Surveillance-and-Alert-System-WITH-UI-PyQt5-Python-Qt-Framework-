@@ -1,0 +1,29 @@
+# Virtual env
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Models
+*.engine
+*.pt
+*.onnx
+
+# Videos
+*.mp4
+*.avi
+*.mov
+
+# Logs & outputs
+logs/
+evidence/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+config_secret.json
