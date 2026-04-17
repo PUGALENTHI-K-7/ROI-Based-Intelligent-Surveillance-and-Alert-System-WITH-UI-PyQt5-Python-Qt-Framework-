@@ -11,12 +11,15 @@ class Camera:
 
         self.input_mode = config.get('input_mode', 'file')
 
+        # Store source for reconnection
+        self.source = config['video_path'] if self.input_mode == 'file' else config['webcam_url']
+
         if self.input_mode == 'file':
-            self.cap = cv2.VideoCapture(config['video_path'])
+            self.cap = cv2.VideoCapture(self.source)
             self.threaded = False
 
         else:
-            self.cap = cv2.VideoCapture(config['webcam_url'])
+            self.cap = cv2.VideoCapture(self.source)
             self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
             self.threaded = True
@@ -35,8 +38,32 @@ class Camera:
 
     def update(self):
         while self.running:
-            ret, frame = self.cap.read()
-            if not ret:
+            # Check if camera is still open
+            if not self.cap.isOpened():
+                print("⚠️ Camera disconnected. Attempting to reconnect...")
+                time.sleep(1)
+                try:
+                    self.cap.open(self.source)
+                    if not self.cap.isOpened():
+                        print("⚠️ Reconnection failed, retrying...")
+                    continue
+                except Exception as e:
+                    print(f"⚠️ Reconnection error: {e}")
+                    time.sleep(1)
+                    continue
+
+            # Safely read frame with error handling
+            try:
+                ret, frame = self.cap.read()
+            except Exception as e:
+                print(f"⚠️ Camera read error: {e}")
+                time.sleep(0.5)
+                continue
+
+            # Handle failed frames
+            if not ret or frame is None:
+                print("⚠️ Frame not received, retrying...")
+                time.sleep(0.1)
                 continue
 
             with self.lock:
@@ -51,7 +78,11 @@ class Camera:
             with self.lock:
                 return self.ret, self.frame.copy()
         else:
-            return self.cap.read()
+            try:
+                return self.cap.read()
+            except Exception as e:
+                print(f"⚠️ Camera read error: {e}")
+                return False, None
 
     def release(self):
         if self.threaded:

@@ -26,19 +26,11 @@ class BehaviorAnalyzer:
     def is_bbox_inside_roi(self, bbox):
         x1, y1, x2, y2 = bbox
 
-        points = [
-            (x1, y1),
-            (x2, y1),
-            (x1, y2),
-            (x2, y2),
-            ((x1 + x2) / 2, (y1 + y2) / 2)
-        ]
+        cx = int((x1 + x2) / 2)
+        cy = int((y1 + y2) / 2)
 
-        for (px, py) in points:
-            if cv2.pointPolygonTest(self.roi_polygon, (int(px), int(py)), False) >= 0:
-                return True
-
-        return False
+        # Only center point must be inside ROI
+        return cv2.pointPolygonTest(self.roi_polygon, (cx, cy), False) >= 0
 
     # 🔥 OVERLAP CHECK
     def bbox_roi_overlap(self, bbox, frame_shape):
@@ -58,7 +50,7 @@ class BehaviorAnalyzer:
 
         overlap_ratio = overlap_pixels / box_pixels
 
-        return overlap_ratio > 0.08
+        return overlap_ratio > 0.3
 
     # 🔥 DUPLICATE CHECK
     def is_duplicate_intrusion(self, cx, cy):

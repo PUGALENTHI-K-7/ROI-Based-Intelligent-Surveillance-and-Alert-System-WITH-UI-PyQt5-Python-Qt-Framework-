@@ -3,3 +3,7 @@ ultralytics
 supervision
 pillow
 numpy
+PyQt5
+torch
+torchvision
+torchaudio

@@ -17,7 +17,8 @@ class Detector:
             verbose=False,
             classes=[0],
             imgsz=960,
-            conf=0.3,
+            conf=0.5,
+            iou=0.5
         )[0]
 
         return sv.Detections.from_ultralytics(results)

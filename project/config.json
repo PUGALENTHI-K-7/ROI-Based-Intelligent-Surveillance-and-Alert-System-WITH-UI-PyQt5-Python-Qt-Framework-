@@ -1,7 +1,7 @@
 {
   "input_mode": "webcam",
   "video_path": "C:\\ROI_SAS\\TESTING_INPUT.mp4",
-  "webcam_url": "https://10.188.247.42:8080/video",
+  "webcam_url": "https://10.107.130.66:8080/video",
   "roi": [
     470,
     137,
@@ -24,20 +24,20 @@
   },
   "roi_polygon": [
     [
-      701,
+      455,
       228
     ],
     [
-      979,
-      238
+      743,
+      273
     ],
     [
-      940,
-      606
+      667,
+      623
     ],
     [
-      681,
-      590
+      441,
+      565
     ]
   ]
 }
