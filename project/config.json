@@ -12,9 +12,9 @@
   "email": {
     "smtp_server": "smtp.gmail.com",
     "smtp_port": 587,
-    "sender_email": "aegon.6.vi@gmail.com",
-    "sender_password": "ojll ezlp ujbh morv",
-    "receiver_email": "pugalpride@gmail.com"
+    "sender_email": "",
+    "sender_password": "",
+    "receiver_email": ""
   },
   "evidence_dir": "evidence",
   "logs_dir": "logs",
