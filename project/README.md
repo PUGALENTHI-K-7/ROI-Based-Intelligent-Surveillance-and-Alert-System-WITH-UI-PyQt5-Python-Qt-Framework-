@@ -30,7 +30,7 @@ It supports real-time webcam/IP stream input, alert generation, email notificati
 ## ⚙️ Installation
 
 ### 1. Clone the repository
-git clone <https://github.com/PUGALENTHI-K-7/ROI-Based-Intelligent-Surveillance-and-Alert-System-WITHOUT-UI-.git>
+git clone <https://github.com/PUGALENTHI-K-7/ROI-Based-Intelligent-Surveillance-and-Alert-System-WITH-UI-PyQt5-Python-Qt-Framework-.git>
 cd ROI_SAS/project
 
 
